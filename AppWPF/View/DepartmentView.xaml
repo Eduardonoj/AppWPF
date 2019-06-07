@@ -1,0 +1,41 @@
+﻿<Controls:MetroWindow x:Class="AppWPF.View.DepartmentView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppWPF.View"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title= "{Binding Titulo}" Height="800" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+       
+        <Grid.ColumnDefinitions>
+             <ColumnDefinition/>
+            <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+        <Label Content="Name" Grid.Row="0" Grid.Column="0"/>
+        <TextBox Grid.Row="0" Grid.Column="1" IsReadOnly="{Binding IsReadOnlyName}" Text="{Binding Name}"/>
+        <Label Content="Budget" Grid.Row="1"  Grid.Column="0" />
+        <TextBox Grid.Row="1" Grid.Column="1" IsReadOnly="{Binding IsReadOnlyBudget}" Text="{Binding Budget}"/>
+        <Label Content="Admin" Grid.Row="2" Grid.Column="0"/>
+        <TextBox Grid.Row="2" Grid.Column="1" IsReadOnly="{Binding IsReadOnlyAdmin}" Text="{Binding Admin}"/>
+        <DataGrid SelectedItem="{Binding SelectDepartment}" ItemsSource="{Binding Departments}" Grid.Row="3" Grid.ColumnSpan="2">
+        </DataGrid>
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <Button IsEnabled="{Binding IsEnableAdd}" Content="Add" Command="{Binding Instancia}" CommandParameter="Add"/>
+            <Button IsEnabled="{Binding IsEnableDelete}" Content="Delete" Command="{Binding Instancia}" CommandParameter="Delete"/>
+            <Button IsEnabled="{Binding IsEnableUpdate}" Content="Update" Command="{Binding Instancia}" CommandParameter="Update"/>
+            <Button IsEnabled="{Binding IsEnableSave}" Content="Save" Command="{Binding Instancia}" CommandParameter="Save"/>
+            <Button IsEnabled="{Binding IsEnableCancel}" Content="Cancel" Command="{Binding Instancia}" CommandParameter="Cancel"/>
+            </StackPanel>
+
+
+    </Grid>
+</Controls:MetroWindow>
